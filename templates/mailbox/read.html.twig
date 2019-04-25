@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inbox - {{ parent() }} {% endblock %}
+
+{% block body %}
+<div class="panel-body no-padding">
+    <div class="card shadow-none mt-3 border border-light">
+        <div class="card-body">
+            <div class="media mb-3">
+            <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-3 mail-img shadow" alt="media image"  width="100" height="100">
+                <div class="media-body">
+                <span class="media-meta float-right">{{ email.date | date('d M Y h:m') }}</span>
+                {% if email.fromName != NULL %}
+                    <h4 class="text-primary m-0">{{ email.fromName }}</h4>
+                {% endif %}                
+                <h6 class="text-muted">From : {{ email.fromAddress }}</h6>
+                </div>
+            </div>
+
+            <div class="mail-content">
+                {{ (email.textHtml != NULL) ? (email.textHtml | raw) : email.textPlain | nl2br }}
+            </div>
+
+            <hr>
+            {% if email.attachments | length != 0 %}
+                <h4> <i class="fa fa-paperclip mr-2"></i> Attachments <span>({{ email.attachments | length }})</span> </h4>
+                <div class="row">
+                    {% for attachment in email.attachments %}
+                        <div class="col-sm-4 col-md-3">
+                            <a href="javascript:void();"> <img src="http://bootdey.com/img/Content/avatar/avatar6.png" alt="attachment" class="img-thumbnail"> </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="media mt-3">
+                <a href="javascript:void();" class="media-left">
+                    <img alt="" src="http://bootdey.com/img/Content/avatar/avatar1.png" width="50" height="50">
+                </a>
+                <div class="media-body">
+                    <textarea class="wysihtml5 form-control" rows="9" placeholder="Reply here..."></textarea>
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="button" class="btn btn-primary waves-effect waves-light mt-3"><i class="fa fa-send mr-1"></i> Send</button>
+            </div>        
+        </div>
+    </div>
+</div>
+{% endblock %}

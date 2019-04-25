@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use SecIT\ImapBundle\Service\Imap;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/mailbox")
@@ -45,6 +47,20 @@ class MailBoxController extends AbstractController
 
         return $this->render('mailbox/index.html.twig', [
             'emails' => $emails,
+        ]);
+    }
+
+    /**
+     * @Route("/read/{mailId}", name="mailbox_read")
+     */
+    public function read(Imap $imap, Request $request, $mailId)
+    {
+        $gmailConnection = $imap->get('gmail_connection');
+
+        $email = $gmailConnection->getMail($mailId, true);
+
+        return $this->render('mailbox/read.html.twig', [
+            'email' => $email,
         ]);
     }
 }
