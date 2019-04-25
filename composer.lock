@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cee4085fe3fa88057621162b3c43239f",
+    "content-hash": "f1180fdf8a41c084bc4ffd65ffd019d7",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1554,6 +1554,58 @@
             "time": "2017-05-04T11:12:50+00:00"
         },
         {
+            "name": "php-imap/php-imap",
+            "version": "3.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barbushin/php-imap.git",
+                "reference": "d4f8ef4504dfb555857241aa7d1e414a1c229079"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barbushin/php-imap/zipball/d4f8ef4504dfb555857241aa7d1e414a1c229079",
+                "reference": "d4f8ef4504dfb555857241aa7d1e414a1c229079",
+                "shasum": ""
+            },
+            "require": {
+                "ext-imap": "*",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpImap\\": "src/PhpImap"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Barbushin",
+                    "email": "barbushin@gmail.com",
+                    "homepage": "http://linkedin.com/in/barbushin"
+                }
+            ],
+            "description": "Manage mailboxes, filter/get/delete emails in PHP (supports IMAP/POP3/NNTP)",
+            "homepage": "https://github.com/barbushin/php-imap",
+            "keywords": [
+                "imap",
+                "mail",
+                "mailbox",
+                "php",
+                "pop3",
+                "receive emails"
+            ],
+            "time": "2017-12-22T12:53:34+00:00"
+        },
+        {
             "name": "phpdocumentor/reflection-common",
             "version": "1.0.1",
             "source": {
@@ -1943,6 +1995,57 @@
                 "simple-cache"
             ],
             "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "secit-pl/imap-bundle",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/secit-pl/imap-bundle.git",
+                "reference": "81c96d468e24068afd5cac57a925d6d739ac76ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/secit-pl/imap-bundle/zipball/81c96d468e24068afd5cac57a925d6d739ac76ad",
+                "reference": "81c96d468e24068afd5cac57a925d6d739ac76ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "php-imap/php-imap": "~2.0|~3.0",
+                "symfony/dependency-injection": "~2.8|~3.0|~4.0",
+                "symfony/framework-bundle": "~2.8|~3.0|~4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SecIT\\ImapBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tomasz Gemza",
+                    "email": "t.gemza@secit.pl"
+                }
+            ],
+            "description": "PHP-IMAP Symfony integration.",
+            "homepage": "http://secit.pl",
+            "keywords": [
+                "bundle",
+                "imap",
+                "php-imap",
+                "symfony"
+            ],
+            "time": "2018-12-05T08:14:54+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
