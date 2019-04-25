@@ -13,15 +13,24 @@ class MailBoxController extends AbstractController
 {
     CONST MAX_EMAIL = 10;
 
+    public function sidebar(Imap $imap)
+    {
+        $gmailConnection = $imap->get('gmail_connection');
+
+        // count: flags, messages, recent, unseen, uidnext, and uidvalidity
+        $statusMailbox = $gmailConnection->statusMailbox();
+
+        return $this->render('mailbox/components/sidebar.html.twig', [
+            'statusMailbox' => $statusMailbox,
+        ]);
+    }
+    
     /**
      * @Route("/", name="mailbox_inbox")
      */
     public function inbox(Imap $imap)
     {
         $gmailConnection = $imap->get('gmail_connection');
-
-        // count: flags, messages, recent, unseen, uidnext, and uidvalidity
-        $statusMailbox = $gmailConnection->statusMailbox();
 
         // 5 days from current date
         $date = (new \DateTime('NOW'))->modify('-5 day');
@@ -35,7 +44,6 @@ class MailBoxController extends AbstractController
         }
 
         return $this->render('mailbox/index.html.twig', [
-            'statusMailbox' => $statusMailbox,
             'emails' => $emails,
         ]);
     }

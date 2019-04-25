@@ -1,16 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MailBoxController!{% endblock %}
+{% block title %}Inbox - {{ parent() }} {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <pre>
-        {{ dump(emails) }}
-    </pre>
+<div class="panel-body no-padding">
+    <div class="table-responsive">
+        <table class="table table-hover table-email">
+            <tbody>
+                {% for email in emails %}
+                    <tr class="unread selected" id="email-{{ email.id }}">
+                        <td>
+                            <div class="ckbox ckbox-theme">
+                                <input id="checkbox1" type="checkbox" checked="checked" class="mail-checkbox">
+                                <label for="checkbox1"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="http://127.0.0.1:8000/mailbox/read/{{ email.id }}" class="star star-checked"><i class="fa fa-star"></i></a>
+                        </td>
+                        <td>
+                            <div class="media">
+                                <a href="http://127.0.0.1:8000/mailbox/read/{{ email.id }}" class="pull-left">
+                                    <img alt="..." src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="text-primary">{{ email.fromName != NULL ? email.fromName : email.fromAddress }}</h4>
+                                    <p class="email-summary"><strong>Commits pushed</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit... <span class="label label-success">New</span> </p>
+                                    <span class="media-meta">{{ email.date | date('d M Y h:m') }}</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

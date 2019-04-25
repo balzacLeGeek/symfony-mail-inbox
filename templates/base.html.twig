@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}PHP IMAP{% endblock %}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/design.css') }}" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="mail-compose.html" class="btn btn-danger btn-block btn-compose-email">Compose Email</a>
+                    {{ render(controller('App\\Controller\\MailBoxController::sidebar')) }}
+                </div>
+                <div class="col-sm-9">
+                    <div class="panel rounded shadow panel-teal">
+                        {% include "mailbox/components/header.html.twig" %}
+
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
