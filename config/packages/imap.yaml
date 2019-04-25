@@ -1,2 +1,6 @@
 imap:
-    connections: []
+    connections:
+        gmail_connection:
+            mailbox: "{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX"
+            username: "your_Gmail_address"
+            password: "your_unhacked_password"
